@@ -24,7 +24,7 @@ def reverse(s):
     return reverse(s[1:] + s[0])
 
 def removeWhite(s):
-    new_s = s.replace(' ', '').replace("'", '')
-    return new_s
+    new_string = s.replace(' ', '').replace("'", '')
+    return new_string
 
 print(removeWhite("madam i'm adam"))
