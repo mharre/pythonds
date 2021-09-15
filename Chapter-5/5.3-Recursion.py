@@ -1,3 +1,4 @@
+from pythonds.basic import Stack
 
 def listsum(numList):
     if len(numList) == 1:
@@ -27,4 +28,23 @@ def removeWhite(s):
     new_s = s.replace(' ', '').replace("'", '')
     return new_s
 
-print(removeWhite("madam i'm adam"))
+# print(removeWhite("madam i'm adam"))
+
+rStack = Stack()
+
+def toStr(n,base):
+    convertString = "0123456789ABCDEF"
+    while n > 0:
+        if n < base:
+            rStack.push(convertString[n])
+        else:
+            rStack.push(convertString[n % base])
+        n = n // base
+    res = ""
+    while not rStack.isEmpty():
+        res = res + str(rStack.pop())
+    return res
+
+print(toStr(1453,16))
+print(toStr(10,2))
+
