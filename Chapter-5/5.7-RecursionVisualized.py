@@ -1,45 +1,45 @@
 import turtle
 from random import randrange
 
-myTurtle = turtle.Turtle()
-myWin = turtle.Screen()
+# myTurtle = turtle.Turtle()
+# myWin = turtle.Screen()
 
-def drawSpiral(myTurtle, lineLen):
-    if lineLen > 0:
-        myTurtle.forward(lineLen)
-        myTurtle.right(90)
-        drawSpiral(myTurtle,lineLen-5)
+# def drawSpiral(myTurtle, lineLen):
+#     if lineLen > 0:
+#         myTurtle.forward(lineLen)
+#         myTurtle.right(90)
+#         drawSpiral(myTurtle,lineLen-5)
 
-drawSpiral(myTurtle,100)
-myWin.exitonclick()
+# drawSpiral(myTurtle,100)
+# myWin.exitonclick()
 
 def help(n):
     n = randrange(1,15)
     return n
 
-def tree(branchLen,t):
-    if branchLen > 5:
-        a = randrange(1,15)
-        t.forward(branchLen)
-        t.right(20)
-        # t.pensize(abs(t.pensize()-1))
-        tree(branchLen-help(a),t)
-        t.left(40)
-        tree(branchLen-help(a),t)
-        t.right(20)
-        t.backward(branchLen)
-
-
 # def tree(branchLen,t):
 #     if branchLen > 5:
+#         a = randrange(1,15)
 #         t.forward(branchLen)
 #         t.right(20)
-#         # t.pensize(abs(t.pensize() - 1)) 
-#         tree(branchLen-15,t)
+#         # t.pensize(abs(t.pensize()-1))
+#         tree(branchLen-help(a),t)
 #         t.left(40)
-#         tree(branchLen-15,t)
+#         tree(branchLen-help(a),t)
 #         t.right(20)
 #         t.backward(branchLen)
+
+
+def tree(branchLen,t):
+    if branchLen > 5:
+        t.forward(branchLen)
+        t.right(20)
+        # t.pensize(abs(t.pensize() - 1)) 
+        tree(branchLen-15,t)
+        t.left(40)
+        tree(branchLen-15,t)
+        t.right(20)
+        t.backward(branchLen)
 
 
 
