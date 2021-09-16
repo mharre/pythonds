@@ -17,29 +17,29 @@ def help(n):
     n = randrange(1,15)
     return n
 
-# def tree(branchLen,t):
-#     if branchLen > 5:
-#         a = randrange(1,15)
-#         t.forward(branchLen)
-#         t.right(20)
-#         # t.pensize(abs(t.pensize()-1))
-#         tree(branchLen-help(a),t)
-#         t.left(40)
-#         tree(branchLen-help(a),t)
-#         t.right(20)
-#         t.backward(branchLen)
-
-
 def tree(branchLen,t):
     if branchLen > 5:
+        a = randrange(1,15)
         t.forward(branchLen)
         t.right(20)
-        # t.pensize(abs(t.pensize() - 1)) 
-        tree(branchLen-15,t)
+        # t.pensize(abs(t.pensize()-1))
+        tree(branchLen-help(a),t)
         t.left(40)
-        tree(branchLen-15,t)
+        tree(branchLen-help(a),t)
         t.right(20)
         t.backward(branchLen)
+
+
+# def tree(branchLen,t):
+#     if branchLen > 5:
+#         t.forward(branchLen)
+#         t.right(20)
+#         # t.pensize(abs(t.pensize() - 1)) 
+#         tree(branchLen-15,t)
+#         t.left(40)
+#         tree(branchLen-15,t)
+#         t.right(20)
+#         t.backward(branchLen)
 
 
 
