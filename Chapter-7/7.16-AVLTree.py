@@ -161,7 +161,6 @@ class BinarySearchTree:
                                 return False
 
 
-
         def delete(self,key):
                 if self.size > 1:
                         nodeToRemove = self._get(key,self.root)
@@ -216,6 +215,42 @@ class BinarySearchTree:
                                                         currentNode.rightChild.payload,
                                                         currentNode.rightChild.leftChild,
                                                         currentNode.rightChild.rightChild)
+
+        def rotateLeft(self,rotRoot):
+                newRoot = rotRoot.rightChild
+                rotRoot.rightChild = newRoot.leftChild
+                if newRoot.leftChild != None:
+                        newRoot.leftChild.parent = rotRoot
+                newRoot.parent = rotRoot.parent
+                if rotRoot.isRoot():
+                        self.root = newRoot
+                else:
+                        if rotRoot.isLeftChild():
+                                rotRoot.parent.leftChild = newRoot
+                        else:
+                                rotRoot.parent.rightChild = newRoot
+                newRoot.leftChild = rotRoot
+                rotRoot.parent = newRoot
+                rotRoot.balanceFactor = rotRoot.balanceFactor + 1 - min(newRoot.balanceFactor, 0)
+                newRoot.balanceFactor = newRoot.balanceFactor + 1 + max(rotRoot.balanceFactor, 0)
+        
+        # def rotateRight(self,rotRoot):
+        #         newRoot = rotRoot.leftChild
+        #         rotRoot.leftChild = newRoot.rightChild
+        #         if newRoot.rightChild != None:
+        #                 newRoot.rightChild.parent = rotRoot
+        #         newRoot.parent = rotRoot.parent
+        #         if rotRoot.isRoot():
+        #                 self.root = newRoot
+        #         else:
+        #                 if rotRoot.isRightChild():
+        #                         rotRoot.parent.rightChild = newRoot
+        #                 else:
+        #                         rotRoot.parent.leftChild = newRoot
+        #         newRoot.rightChild = rotRoot
+        #         rotRoot.parent = newRoot
+        #         rotRoot.balanceFactor = rotRoot.balanceFactor + 1 - min(newRoot.balanceFactor, 0)
+        #         newRoot.balanceFactor = newRoot.balanceFactor + 1 + max(rotRoot.balanceFactor, 0)
 
 mytree = BinarySearchTree()
 mytree[3]="red"
