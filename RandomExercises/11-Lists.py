@@ -24,12 +24,25 @@ def scalar_mult(s,v):
 # print(scalar_mult(7, [3, 0, 5, 11, 2]))
 
 def dot_product(u, v):
-    a = u + v
-    for num in a:
-        a.append(num + a)
+    a = []
+    for i, vi in enumerate(v):
+        a.append(u[i] * vi)
+ 
+    return sum(a)
 
-    return a 
-
-print(dot_product([1, 1], [1, 1]))
+# print(dot_product([1, 1], [1, 1]))
 # print(dot_product([1, 2], [1, 4]))
 # print(dot_product([1, 2, 1], [1, 4, 3]))
+
+def replace(s, old, new):
+    a = s.split(old)
+    glue = new
+    a = glue.join(a)
+
+    return a
+
+# print(replace('Mississippi', 'i', 'I'))
+# s = "I love spom! Spom is my favorite food. Spom, spom, yum!"
+# print(replace(s,'om', 'am'))
+# print(replace(s, "o", "a"))
+
