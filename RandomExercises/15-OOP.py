@@ -60,10 +60,34 @@ class Point:
         return f'{self.x}, {self.y}'
 
 
-p = Point(-7,7)
-q = Point(1,9)
-r = Point(3,1)
-s = Point(-7,1)
+class Rectangle:
+    def __init__(self, posn, w, h):
+        self.corner = posn
+        self.width = w
+        self.height = h
 
-print(p.midpoint_of_circle_four_coords(q,r,s))
+    def __str__(self):
+        return f'({self.corner}, {self.width}, {self.height})'
+
+    def grow(self, delta_width, delta_height):
+        self.width += delta_width
+        self.height += delta_height
+
+    def move(self, dx, dy):
+        self.corner.x += dx
+        self.corner.y += dy
+
+    def area(self):
+        return self.width * self.height
+
+    def perimeter(self):
+        return (self.width * 2) + (self.height * 2)
+
+    def flip(self):
+        """ swaps height and width of rectangle """
+        self.width = self.height
+        self.height = self.width
+        return 'values have been swapped'
+
+r = Rectangle(Point(0, 0), 10, 5)
 
