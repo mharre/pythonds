@@ -116,4 +116,69 @@ def multiply_values(d):
         result = result * val
     return result
 
-print(multiply_values({'test':1, 'test1':3, 'test2': 4, 'test3': 2}))
+# print(multiply_values({'test':1, 'test1':3, 'test2': 4, 'test3': 2}))
+
+def transform_list(l1,l2):
+    keys = l1
+    values = l2
+    return dict(zip(keys,values))
+
+# print(transform_list([1,2,3],[4,5,6]))
+
+color_dict = {'red':'#FF0000',
+          'green':'#008000',
+          'black':'#000000',
+          'white':'#FFFFFF'}
+
+def sorted_dict_key(d):
+    a = {}
+    for key in sorted(d):
+        a.update({key: d[key]})
+    return a
+
+# print(sorted_dict_key(color_dict))
+
+def max_min_dict_value(d, choice):
+    """ returns max or min value of the dictionary provided, choice must be max or min"""
+    if choice.lower() == 'max':
+        return max(d.values())
+    if choice.lower() == 'min':
+        return min(d.values())
+    else:
+        return 'Please enter max or min in string form'
+        
+
+# print(max_min_dict_value({'x':500, 'y':5874, 'z': 560}, 'maxx'))
+
+def remove_dups(d):
+    results = {}
+
+    for key,value in d.items():
+        if value not in results.values():
+            results[key] = value
+
+    return results
+
+student_data = {'id1': 
+   {'name': ['Sara'], 
+    'class': ['V'], 
+    'subject_integration': ['english, math, science']
+   },
+ 'id2': 
+  {'name': ['David'], 
+    'class': ['V'], 
+    'subject_integration': ['english, math, science']
+   },
+ 'id3': 
+    {'name': ['Sara'], 
+    'class': ['V'], 
+    'subject_integration': ['english, math, science']
+   },
+ 'id4': 
+   {'name': ['Surya'], 
+    'class': ['V'], 
+    'subject_integration': ['english, math, science']
+   },
+}
+
+# print(remove_dups(student_data))
