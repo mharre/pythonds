@@ -1,5 +1,9 @@
 import operator
 import collections
+import ast
+from itertools import product
+from heapq import nlargest
+from collections import Counter
 # eng2sp = {"one": "uno", "two": "dos", "three": "tres"}
 
 # for k in eng2sp:
@@ -125,10 +129,10 @@ def transform_list(l1,l2):
 
 # print(transform_list([1,2,3],[4,5,6]))
 
-color_dict = {'red':'#FF0000',
-          'green':'#008000',
-          'black':'#000000',
-          'white':'#FFFFFF'}
+# color_dict = {'red':'#FF0000',
+#           'green':'#008000',
+#           'black':'#000000',
+#           'white':'#FFFFFF'}
 
 def sorted_dict_key(d):
     a = {}
@@ -159,26 +163,69 @@ def remove_dups(d):
 
     return results
 
-student_data = {'id1': 
-   {'name': ['Sara'], 
-    'class': ['V'], 
-    'subject_integration': ['english, math, science']
-   },
- 'id2': 
-  {'name': ['David'], 
-    'class': ['V'], 
-    'subject_integration': ['english, math, science']
-   },
- 'id3': 
-    {'name': ['Sara'], 
-    'class': ['V'], 
-    'subject_integration': ['english, math, science']
-   },
- 'id4': 
-   {'name': ['Surya'], 
-    'class': ['V'], 
-    'subject_integration': ['english, math, science']
-   },
-}
+# student_data = {'id1': 
+#    {'name': ['Sara'], 
+#     'class': ['V'], 
+#     'subject_integration': ['english, math, science']
+#    },
+#  'id2': 
+#   {'name': ['David'], 
+#     'class': ['V'], 
+#     'subject_integration': ['english, math, science']
+#    },
+#  'id3': 
+#     {'name': ['Sara'], 
+#     'class': ['V'], 
+#     'subject_integration': ['english, math, science']
+#    },
+#  'id4': 
+#    {'name': ['Surya'], 
+#     'class': ['V'], 
+#     'subject_integration': ['english, math, science']
+#    },
+# }
 
 # print(remove_dups(student_data))
+
+def add_common_values(d1,d2):
+    d = collections.Counter(d1) + collections.Counter(d2)
+    return d
+
+d1 = {'a': 100, 'b': 200, 'c':300}
+d2 = {'a': 300, 'b': 200, 'd':400}
+
+# print(add_common_values(d1,d2))
+
+def unique_values(d):
+    # return set(dic for item in d for dic in item.values())
+    results = []
+    for item in d:
+        for dic in item.values():
+            results.append(dic)
+
+    return set(results)
+
+# print(unique_values([{"V":"S001"}, {"V": "S002"}, {"VI": "S001"}, {"VI": "S005"}, {"VII":"S005"}, {"V":"S009"},{"VIII":"S007"}]))
+
+def all_combos(d):
+    results = []
+    for x,y in product(*d.values()):
+        results.append(x+y)
+
+    return results
+
+# a = {'1':['a','b'], '2':['c','d']}
+# print(all_combos(a))
+
+def highest_3(d):
+    return nlargest(3,d,key=d.get)
+
+# print(highest_3({'a':500, 'b':5874, 'c': 560,'d':400, 'e':5874, 'f': 20}))
+
+def strng_to_dict(strng):
+    d = {}
+    for letter in strng:
+        d[letter] = d.get(letter, 0) + 1
+    return d
+
+print(strng_to_dict('w3resource'))
