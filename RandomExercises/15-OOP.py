@@ -59,6 +59,17 @@ class Point:
     def __str__(self):
         return f'{self.x}, {self.y}'
 
+    def __add__(self, other):
+        return Point(self.x + other.x, self.y + other.y)
+
+    def __mul__(self, other):
+        return self.x * other.x + self.y * other.y
+
+    def __rmul__(self, other):
+        return Point(other * self.x, other * self.y)
+
+    def reverse(self):
+        (self.x, self.y) = (self.y, self.x)
 
 class Rectangle:
     def __init__(self, posn, w, h):
@@ -89,5 +100,16 @@ class Rectangle:
         self.height = self.width
         return 'values have been swapped'
 
-r = Rectangle(Point(0, 0), 10, 5)
+p1 = Point(3,4)
+p2 = Point(5,7)
+
+def fandb(front):
+    import copy
+    back = copy.copy(front)
+    back.reverse()
+    print(str(front) + str(back))
+
+my_list = [1, 2, 3, 4]
+fandb(p1)
+print(p1.reverse())
 
