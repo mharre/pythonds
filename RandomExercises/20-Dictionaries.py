@@ -261,3 +261,64 @@ def sorted_list_in_dict(d):
 
 
 # print(sorted_list_in_dict({'n1': [2, 3, 1], 'n2': [5, 1, 2], 'n3': [3, 2, 4]}))
+
+def replace_blank_spaces(d):
+    d = {k.replace(' ', ''): v for k,v in d.items()}
+    return d
+
+# print(replace_blank_spaces({'S  001': ['Math', 'Science'], 'S    002': ['Math', 'English']}))
+
+
+def get_key_value_count(d):
+    print('Key Value Count')
+    for i, (key,value) in enumerate(d.items(),1):
+        print(f'{key}    {value}    {i}')
+
+    return 'Success'
+
+# get_key_value_count({1: 10, 2: 20, 3: 30, 4: 40, 5: 50, 6: 60})
+
+# students = {'Aex':{'class':'V',
+#         'rolld_id':2},
+#         'Puja':{'class':'V',
+#         'roll_id':3}}
+
+# for x in students:
+#     print(x)
+#     for y in students[x]:
+#         print(y, ':', students[x][y])
+
+
+def count_items_in_list_in_dict(d):
+    return sum(map(len,d.values()))
+
+# print(count_items_in_list_in_dict({'Alex': ['subj1', 'subj2', 'subj3'], 'David': ['subj1', 'subj2']}))
+
+# x = Counter({'Math':81, 'Physics':83, 'Chemistry':87})
+# print(x.most_common())
+
+
+def create_dict_from_2lists(l1, l2):
+    super_dict = collections.defaultdict(set)
+    for c, i in zip(l1,l2):
+        super_dict[c].add(i)
+            
+    return super_dict
+
+# print(create_dict_from_2lists(['Class-V', 'Class-VI', 'Class-VII', 'Class-VIII'], [1, 2, 2, 3]))
+
+
+def sum_of_average(l):
+    for d in l:
+        n1 = d.pop('V')
+        n2 = d.pop('VI')
+        num = round((n1 + n2) / 2)
+        d['V + VI'] = num
+
+    return l
+
+# print(sum_of_average([
+#   {'id' : 1, 'subject' : 'math', 'V' : 70, 'VI' : 82},
+#   {'id' : 2, 'subject' : 'math', 'V' : 73, 'VI' : 74},
+#   {'id' : 3, 'subject' : 'math', 'V' : 75, 'VI' : 86}
+# ])) 
