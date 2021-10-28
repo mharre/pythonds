@@ -29,7 +29,7 @@ class LinkedList:
     def add_first(self, cargo):
         node = Node(cargo)
         node.next = self.head
-        print(self.head)
+        # print(self.head)
         self.head = node
         self.length += 1
 
