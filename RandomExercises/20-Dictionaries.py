@@ -3,7 +3,8 @@ import collections
 import ast
 from itertools import product
 from heapq import nlargest
-from collections import Counter
+from collections import Counter, ChainMap
+from functools import reduce
 # eng2sp = {"one": "uno", "two": "dos", "three": "tres"}
 
 # for k in eng2sp:
@@ -228,4 +229,35 @@ def strng_to_dict(strng):
         d[letter] = d.get(letter, 0) + 1
     return d
 
-print(strng_to_dict('w3resource'))
+# print(strng_to_dict('w3resource'))
+
+# d = {'C1':[1,2,3],'C2':[5,6,7],'C3':[9,10,11]}
+
+# for row in zip(*([key] + (value) for key, value in sorted(d.items()))):
+#     print(*row)
+
+# def count_values(L):
+#     super_dict = collections.defaultdict(list)
+#     for d in L:
+#         for k, v in d.items():
+#             super_dict[k].append(v)
+
+#     for value in super_dict.items():
+#         print(sum(value[1]))
+
+#     return type(super_dict)
+
+# L = [
+#     {'id': 1, 'success': True, 'name': 'Lary'},
+#     {'id': 2, 'success': False, 'name': 'Rabi'},
+#     {'id': 3, 'success': True, 'name': 'Alex'}
+# ]
+
+# print(count_values(L))
+
+def sorted_list_in_dict(d):
+    sorted_dict = {x: sorted(y) for x, y in d.items()}
+    return sorted_dict
+
+
+# print(sorted_list_in_dict({'n1': [2, 3, 1], 'n2': [5, 1, 2], 'n3': [3, 2, 4]}))
