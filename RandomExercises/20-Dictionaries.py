@@ -192,8 +192,8 @@ def add_common_values(d1,d2):
     d = collections.Counter(d1) + collections.Counter(d2)
     return d
 
-d1 = {'a': 100, 'b': 200, 'c':300}
-d2 = {'a': 300, 'b': 200, 'd':400}
+# d1 = {'a': 100, 'b': 200, 'c':300}
+# d2 = {'a': 300, 'b': 200, 'd':400}
 
 # print(add_common_values(d1,d2))
 
@@ -341,8 +341,8 @@ def sum_of_average(l):
 #  data = json.load(f)
 # print(data)
 
-dict_nums = dict(x=list(range(11,20)),y=list(range(21,30)),z=list(range(31,40)))
-print(dict_nums['x'][4]) 
+# dict_nums = dict(x=list(range(11,20)),y=list(range(21,30)),z=list(range(31,40)))
+# print(dict_nums['x'][4]) 
 
 def dict_list_generator(x,y,z):
     x = dict(x=list(range(11,20)))
@@ -351,5 +351,39 @@ def dict_list_generator(x,y,z):
 
     return x | y | z
 
-print(dict_list_generator('x','y','z'))
+# test = dict_list_generator('x','y','z')
+# print(test)
+# print(test['x'][4])
 
+def drop_empty_items(d):
+    # for key, value in list(d.items()):
+    #     if value == None or '':
+    #         d.pop(key)
+    # return d
+    return { k : v for k,v in d.items() if v is not None} #makes copy and returns new dict
+        
+
+# print(drop_empty_items({'c1': 'Red', 'c2': 'Green', 'c3': None}))
+
+def filter_based_on_value(d):
+    return { k: v for k,v in d.items() if v < 170}
+
+# print(filter_based_on_value({'Cierra Vega': 175, 'Alden Cantrell': 180, 'Kierra Gentry': 165, 'Pierre Cox': 190}))
+
+def convert_list_to_nested_dict(l1,l2,l3):
+    return [{x: {y: z}} for (x,y,z) in zip(l1,l2,l3)]
+
+# l1 = ['S001', 'S002', 'S003', 'S004']
+# l2 = ['Adina Park', 'Leyton Marsh', 'Duncan Boyle', 'Saim Richards']
+# l3 = [85, 98, 89, 92]
+
+# print(convert_list_to_nested_dict(l1,l2,l3))
+
+def filter_based_on_ht_wt(d,operator,ht,wt):
+    if operator.lower() == 'less':
+        return { k: v for k,v in d.items() if v < (ht, wt)}
+    if operator.lower() == 'greater':
+        return { k: v for k,v in d.items() if v > (ht, wt)}
+    return 'please change operator to "less" or "greater" only'
+
+# print(filter_based_on_ht_wt({'Cierra Vega': (6.2, 70), 'Alden Cantrell': (5.9, 65), 'Kierra Gentry': (6.0, 68), 'Pierre Cox': (5.8, 66)}, 'less' , 6, 70))
