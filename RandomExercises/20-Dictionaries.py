@@ -322,3 +322,34 @@ def sum_of_average(l):
 #   {'id' : 2, 'subject' : 'math', 'V' : 73, 'VI' : 74},
 #   {'id' : 3, 'subject' : 'math', 'V' : 75, 'VI' : 86}
 # ])) 
+
+# d = {"students":[{"firstName": "Nikki", "lastName": "Roysden"},
+#                {"firstName": "Mervin", "lastName": "Friedland"},
+#                {"firstName": "Aron ", "lastName": "Wilkins"}],
+# "teachers":[{"firstName": "Amberly", "lastName": "Calico"},
+#          {"firstName": "Regine", "lastName": "Agtarap"}]}
+# print("Original dictionary:")
+# print(d)
+# print(type(d))
+# import json
+ 
+# with open("dictionary", "w") as f:
+#    json.dump(d, f, indent = 4, sort_keys = True)
+ 
+# print("\nJson file to dictionary:")
+# with open('dictionary') as f:
+#  data = json.load(f)
+# print(data)
+
+dict_nums = dict(x=list(range(11,20)),y=list(range(21,30)),z=list(range(31,40)))
+print(dict_nums['x'][4]) 
+
+def dict_list_generator(x,y,z):
+    x = dict(x=list(range(11,20)))
+    y = dict(y=list(range(21,30)))
+    z = dict(z=list(range(31,40)))
+
+    return x | y | z
+
+print(dict_list_generator('x','y','z'))
+
