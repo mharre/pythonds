@@ -456,5 +456,55 @@ def turn_string_into(dict_list, strng):
 def clear_list_in_dict(d):
     return {k:[v.clear()] for k,v in d.items() if len(v) != 0}
 
-print(clear_list_in_dict({'C1': [10, 20, 30], 'C2': [20, 30, 40], 'C3': [12, 34]}))
+# print(clear_list_in_dict({'C1': [10, 20, 30], 'C2': [20, 30, 40], 'C3': [12, 34]}))
 
+def extract_list_from_list_dict(l, subject):
+    result = [d[subject] for d in l if subject in d]
+
+    return result
+    # subject = subject.capitalize()
+    # new_list = []
+    # for d in l:
+    #     nums = d.get(subject)
+    #     new_list.append(nums)
+    # return new_list
+
+# print(extract_list_from_list_dict([{'Math': 90, 'Science': 92}, {'Math': 89, 'Science': 94}, {'Math': 92, 'Science': 88}], 'Science'))
+
+def length_given_dict_values(d):
+    new_dict = {}
+    for k,v in d.items():
+        # new_dict.update({v: len(v)})
+        new_dict[v] = len(v)
+    return new_dict
+
+# print(length_given_dict_values({1: 'red', 2: 'green', 3: 'black', 4: 'white', 5: 'black'}))
+
+def dict_depth(d):
+    if isinstance(d, dict):
+        return 1 + (max(map(dict_depth, d.values())) if d else 0)
+    return 0
+
+# print(dict_depth({'a':1, 'b': {'c': {'d': {}}}}))
+
+def dict_to_list_of_lists(d):
+    new_list = []
+    for k,v in d.items():
+        new_list.append([k,v])
+
+    return new_list
+
+# print(dict_to_list_of_lists({1: 'red', 2: 'green', 3: 'black', 4: 'white', 5: 'black'}))
+
+def filter_even(d):
+    result = {key: [idx for idx in val if not idx % 2]  
+          for key, val in d.items()}   
+    return result
+
+# print(filter_even({'V': [1, 4, 6, 10], 'VI': [1, 4, 12], 'VII': [1, 3, 8]}))
+
+def shorted_list_of_values(d):
+    for k,v in d.items():
+        print(k, len(v))
+
+print(shorted_list_of_values({'V': [10, 12], 'VI': [10], 'VII': [10, 20, 30, 40], 'VIII': [20], 'IX': [10, 30, 50, 70], 'X': [80]}))
