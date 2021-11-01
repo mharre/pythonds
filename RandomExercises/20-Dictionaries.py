@@ -74,10 +74,7 @@ def sort_dict(dictionary, order):
     if order not in [1, -1]:
         return 'Please enter a value that is either 1 or -1'
     
-
-
-# fruits = {'banana': 20, 'orange':30, 'papaya': 12, 'apple': 3}
-# print(sort_dict(fruits, 3))
+# print(sort_dict({'banana': 20, 'orange':30, 'papaya': 12, 'apple': 3}, 3))
 
 def add_to_dict(d, key, value):
     d[key] = value
@@ -387,3 +384,77 @@ def filter_based_on_ht_wt(d,operator,ht,wt):
     return 'please change operator to "less" or "greater" only'
 
 # print(filter_based_on_ht_wt({'Cierra Vega': (6.2, 70), 'Alden Cantrell': (5.9, 65), 'Kierra Gentry': (6.0, 68), 'Pierre Cox': (5.8, 66)}, 'less' , 6, 70))
+
+def check_same_values(d, num):
+    result = all(val == num for val in d.values())
+    return result
+
+# print(check_same_values({'Cierra Vega': 12, 'Alden Cantrell': 12, 'Kierra Gentry': 12, 'Pierre Cox': 13}, 10))
+
+def group_seq_of_kvp_into_dict(li):
+    d = {}
+    for k,v in li:
+        d.setdefault(k,[]).append(v)
+
+    return d
+
+# print(group_seq_of_kvp_into_dict([('yellow', 1), ('blue', 2), ('yellow', 3), ('blue', 4), ('red', 1)]))
+
+def dict_of_lists_to_lists_of_dict(d):
+    v = [dict(zip(d,t)) for t in zip(*d.values())]
+    return v    
+
+# print(dict_of_lists_to_lists_of_dict({'Science': [88, 89, 62, 95], 'Language': [77, 78, 84, 80]}))
+
+def remove_dict_from_list(l,remove):
+    for d in l:
+        for idx,v in enumerate(d.values()):
+            # print(k)
+            if v == remove:
+                l.pop(idx)
+    return l
+
+# print(remove_dict_from_list([{'id': '#FF0000', 'color': 'Red'},
+#                             {'id': '#800000', 'color': 'Maroon'}, 
+#                             {'id': '#FFFF00', 'color': 'Yellow'}, 
+#                             {'id': '#808000', 'color': 'Olive'}],'#FF0000'))
+
+                
+def remove_dict_from_list2(colors,r_id):
+    colors[:] = [d for d in colors if d.get('id') != r_id]
+    return colors
+
+# print(remove_dict_from_list2([{'id': '#FF0000', 'color': 'Red'},
+#                             {'id': '#800000', 'color': 'Maroon'}, 
+#                             {'id': '#FFFF00', 'color': 'Yellow'}, 
+#                             {'id': '#808000', 'color': 'Olive'}],'#FF0000'))
+
+
+def turn_string_into(dict_list, strng):
+    if strng.lower() == 'int':
+        for d in dict_list:
+            for k,v in d.items():
+                d[k] = int(v)
+        return dict_list
+
+    if strng.lower() == 'float':
+        for d in dict_list:
+            for k,v in d.items():
+                d[k] = float(v) 
+        return dict_list
+
+# print(turn_string_into([{'x': '10', 'y': '20', 'z': '30'}, {'p': '40', 'q': '50', 'r': '60'}], 'float'))
+
+# def convert_to_int(lst):
+#     result = [dict([a, int(x)] for a, x in b.items()) for b in lst]
+#     return result
+
+# def convert_to_float(lst):
+#     result = [dict([a, float(x)] for a, x in b.items()) for b in lst]
+#     return result
+
+def clear_list_in_dict(d):
+    return {k:[v.clear()] for k,v in d.items() if len(v) != 0}
+
+print(clear_list_in_dict({'C1': [10, 20, 30], 'C2': [20, 30, 40], 'C3': [12, 34]}))
+
