@@ -5,6 +5,7 @@ from itertools import product
 from heapq import nlargest
 from collections import Counter, ChainMap
 from functools import reduce
+from operator import getitem
 # eng2sp = {"one": "uno", "two": "dos", "three": "tres"}
 
 # for k in eng2sp:
@@ -542,3 +543,77 @@ def total_length_values(d):
     return sum(list(len(v) for v in d.values()))
 
 # print(total_length_values({'#FF0000': 'Red', '#800000': 'Maroon', '#FFFF00': 'Yellow', '#808000': 'Olive'}))
+
+def invert_dict(d):
+    super_dict = collections.defaultdict(list)
+
+    for k,v in d.items():
+        super_dict[v].append(k)
+
+    return dict(super_dict)
+
+# print(invert_dict({
+#   'Ora Mckinney': 8,
+#   'Theodore Hollandl': 7,
+#   'Mae Fleming': 7,
+#   'Mathew Gilbert': 8,
+#   'Ivan Little': 7,  
+# }))
+
+def combine_dict_values_to_list(d1,d2):
+    super_dict = collections.defaultdict(list)
+    for d in [d1,d2]:
+        for k,v in d.items():
+            super_dict[k].append(v)
+
+    return dict(super_dict)
+
+# print(combine_dict_values_to_list({'w': 50, 'x': 100, 'y': 'Green', 'z': 400}, {'x': 300, 'y': 'Red', 'z': 600}))
+
+def no_idea_name(l, fn):
+    return dict(zip(l, map(fn,l)))
+
+# print(no_idea_name([1, 2, 3, 4], lambda x: x*x))
+
+def list_of_corresponding_values(l, selector):
+    selector = selector.lower()
+    return list(d.get(selector) for d in l)
+
+# print(list_of_corresponding_values([{'name': 'Theodore', 'age': 18}, {'name': 'Mathew', 'age': 22}, {'name': 'Roxanne', 'age': 20}, {'name': 'David', 'age': 18}],'age'))
+
+def no_idea_name_2(d, fn):
+    return dict((k, fn(v)) for k,v in d.items())
+
+# print(no_idea_name_2({
+#   'Theodore': { 'user': 'Theodore', 'age': 45 },
+#   'Roxanne': { 'user': 'Roxanne', 'age': 15 },
+#   'Mathew': { 'user': 'Mathew', 'age': 21 },
+# }, lambda u : u['age']))
+
+def find_keys_specified_value(d, selector):
+    return [k for k,v in d.items() if selector == v]
+
+# print(find_keys_specified_value({'Theodore': 19, 'Roxanne': 20, 'Mathew': 21, 'Betty': 20}, 20))
+
+def lists_to_dict(l1,l2):
+    keys = l1
+    values = l2
+
+    return dict(zip(keys,values))
+
+# print(lists_to_dict(['a', 'b', 'c', 'd', 'e', 'f'],[1, 2, 3, 4, 5]))
+
+def dict_to_tuples(d):
+    return [(k,v) for k,v in d.items()]
+
+# print(dict_to_tuples({'Red': 1, 'Green': 3, 'White': 5, 'Black': 2, 'Pink': 4}))
+
+def flat_list_of_keys(d):
+    return list(d.keys())
+
+# print(flat_list_of_keys({'Theodore': 19, 'Roxanne': 20, 'Mathew': 21, 'Betty': 20}))
+
+def max_min_of_values(d):
+    return max(d, key = d.get), min(d, key = d.get)
+
+# print(max_min_of_values)
