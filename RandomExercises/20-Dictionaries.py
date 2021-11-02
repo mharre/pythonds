@@ -503,8 +503,42 @@ def filter_even(d):
 
 # print(filter_even({'V': [1, 4, 6, 10], 'VI': [1, 4, 12], 'VII': [1, 3, 8]}))
 
-def shorted_list_of_values(d):
-    for k,v in d.items():
-        print(k, len(v))
+def shortest_list_of_values(d):
+    min_value = 1
+    return [k for k,v in d.items() if len(v) == min_value]
 
-print(shorted_list_of_values({'V': [10, 12], 'VI': [10], 'VII': [10, 20, 30, 40], 'VIII': [20], 'IX': [10, 30, 50, 70], 'X': [80]}))
+# print(shortest_list_of_values({'V': [10, 12], 'VI': [10], 'VII': [10, 20, 30, 40], 'VIII': [20], 'IX': [10, 30, 50, 70], 'X': [80]}))
+
+def count_frequency_of_values(d):
+    return collections.Counter(d.values())
+
+# print(count_frequency_of_values({'V': 10, 'VI': 10, 'VII': 40, 'VIII': 20, 'IX': 70, 'X': 80, 'XI': 40, 'XII': 20}))
+
+def extract_value_into_list(l):
+    return [list(d.values()) for d in l]
+
+# print(extract_value_into_list([{'student_id': 1, 'name': 'Jean Castro', 'class': 'V'}, {'student_id': 2, 'name': 'Lula Powell', 'class': 'V'}, {'student_id': 3, 'name': 'Brian Howell', 'class': 'VI'}, {'student_id': 4, 'name': 'Lynne Foster', 'class': 'VI'}, {'student_id': 5, 'name': 'Zachary Simon', 'class': 'VII'}]))
+
+def list_of_lists_to_dict(l):
+    # keys = []
+    # values = []
+    # for idx,li in enumerate(l):
+    #     keys.append(li[0])
+    #     values.append(li[1:])
+    # return dict(zip(keys,values))
+    result = {item[0]: item[1:] for item in l}
+    return result
+    
+
+# print(list_of_lists_to_dict([[1, 'Jean Castro', 'V'], [2, 'Lula Powell', 'V'], [3, 'Brian Howell', 'VI'], [4, 'Lynne Foster', 'VI'], [5, 'Zachary Simon', 'VII']]))
+
+def key_list_pairings(d):
+    result = [dict(zip(d, sub)) for sub in product(*d.values())]
+    return result
+
+# print(key_list_pairings({1: ['Jean Castro'], 2: ['Lula Powell'], 3: ['Brian Howell'], 4: ['Lynne Foster'], 5: ['Zachary Simon']}))
+
+def total_length_values(d):
+    return sum(list(len(v) for v in d.values()))
+
+# print(total_length_values({'#FF0000': 'Red', '#800000': 'Maroon', '#FFFF00': 'Yellow', '#808000': 'Olive'}))
